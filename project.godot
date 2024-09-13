@@ -13,3 +13,7 @@ config_version=5
 config/name="Input-check-handler"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+InputCheck="*res://input_check.tscn"
