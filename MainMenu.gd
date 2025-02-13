@@ -15,7 +15,7 @@ func _input(event: InputEvent):
 			## Godot 4.3 uses gui_release_focus() instead of these two lines
 			$VBoxContainer/StartButton.grab_focus()
 			$VBoxContainer/StartButton.release_focus()
-			## Enabling Mouse Input and Hover
+			## Enabling Mouse Input and Hover w/individual calls
 			$VBoxContainer/StartButton.mouse_filter = 0
 			$VBoxContainer/SettingsButton.mouse_filter = 0
 			$VBoxContainer/QuitButton.mouse_filter = 0
@@ -23,7 +23,17 @@ func _input(event: InputEvent):
 	elif Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		$VBoxContainer/StartButton.grab_focus()
-		## Disabling Mouse Input and Hover
-		$VBoxContainer/StartButton.mouse_filter = 2
-		$VBoxContainer/SettingsButton.mouse_filter = 2
-		$VBoxContainer/QuitButton.mouse_filter = 2
+		## Disabling Mouse Input and Hover with a for loop call
+		var currMenu = $VBoxContainer
+		for currButton in currMenu.get_children():
+			currButton.mouse_filter = 2
+		
+		## Let's say you had multiple vboxes or "menus" under one parent, then you'd do something like this
+		#for currMenu in self.get_childre():
+		#	for currButton in currMenu.get_children():
+		#		currButton.mouse_filter = 2
+		
+		# Old Method where you list out each button individually
+		#$VBoxContainer/StartButton.mouse_filter = 2
+		#$VBoxContainer/SettingsButton.mouse_filter = 2
+		#$VBoxContainer/QuitButton.mouse_filter = 2
