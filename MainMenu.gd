@@ -29,7 +29,7 @@ func _input(event: InputEvent):
 			currButton.mouse_filter = 2
 		
 		## Let's say you had multiple vboxes or "menus" under one parent, then you'd do something like this
-		#for currMenu in self.get_childre():
+		#for currMenu in self.get_children():
 		#	for currButton in currMenu.get_children():
 		#		currButton.mouse_filter = 2
 		
